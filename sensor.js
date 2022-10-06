@@ -12,7 +12,7 @@ class Sensor{
     update(roadBorders){
         this.#castRays();
         this.readings=[];
-        for(let i=0; i<this.rays.lenght; i++){
+        for(let i=0; i<this.rays.length; i++){
             this.readings.push(
                 this.#getReading(this.rays[i],roadBorders)
             );
@@ -22,7 +22,7 @@ class Sensor{
     #getReading(ray,roadBorders){
         let touches=[];
 
-        for(let i=0;i<roadBorders.lenght;i++){
+        for(let i=0;i<roadBorders.length;i++){
             const touch=getIntersection(
                 ray[0],
                 ray[1],
@@ -34,7 +34,7 @@ class Sensor{
             }
         }
 
-        if(touches.lenght==0){
+        if(touches.length==0){
             return null;
         }else{
             const offsets=touches.map(e=>e.offset);
@@ -67,13 +67,12 @@ class Sensor{
 
 
 
-    draw(ctx){
+  draw(ctx){
         for(let i=0;i<this.rayCount;i++){
-            let end = this.rays[i][1];
+            let end=this.rays[i][1];
             if(this.readings[i]){
                 end=this.readings[i];
             }
-
 
             ctx.beginPath();
             ctx.lineWidth=2;
@@ -101,5 +100,5 @@ class Sensor{
             );
             ctx.stroke();
         }
-    }
+    }        
 }
